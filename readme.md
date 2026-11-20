@@ -325,7 +325,7 @@ With no shadow unit and the CPU's fault injector off, the CPU side behaves exact
 
 #### Configuration files
 
-`a3_components.py` follows the same pattern as the processors you built in Unit II and in [Assignment #1](../a1/a1.md): an O3 CPU (`ShadowO3CPU`) inside a core inside a processor (`ShadowProcessor`). The difference is that this CPU can be given a shadow unit, through its `shadowUnit` parameter.
+`a3_components.py` follows the same pattern as the processors you built in Unit II and in [Assignment #1](https://github.com/CUB-gem5-bootcamp/homework1/blob/658cbf259642ccb67e59529b05b4718dd21b7665/readme.md): an O3 CPU (`ShadowO3CPU`) inside a core inside a processor (`ShadowProcessor`). The difference is that this CPU can be given a shadow unit, through its `shadowUnit` parameter.
 
 `a3_script.py` runs one program on a single-core system at 3 GHz, with 32 KiB L1 caches and a 2 MiB L2. It takes these options:
 
