@@ -14,11 +14,11 @@ This assignment builds on the CPU track of Unit 4. You may want to refresh these
 
 | Lesson | Relevant Topics |
 |---|---|
-| [SimObjects](../../lessons/04-gem5-models/04a-cpus/01-sim-objects.md) | the declaration, header, and source files; parameters; `SConscript` |
-| [Event-driven simulation](../../lessons/04-gem5-models/04a-cpus/02-event-driven-sim.md) | `schedule()`, `EventFunctionWrapper`, scheduling an event vs. calling a function, SimObjects as parameters |
-| [Debugging](../../lessons/04-gem5-models/04a-cpus/04-debugging.md) | debug flags, `DPRINTF`, `panic_if` and `fatal_if` |
-| [Writing a gem5 branch predictor](../../lessons/04-gem5-models/04a-cpus/05-branch-predictors.md) | extending a base class that the CPU calls into |
-| [Modeling processors](../../lessons/02-beginning-simulation/02-processors.md) | the O3 CPU, and building your own standard library processors |
+| [SimObjects](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/01-sim-objects.md) | the declaration, header, and source files; parameters; `SConscript` |
+| [Event-driven simulation](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/02-event-driven-sim.md) | `schedule()`, `EventFunctionWrapper`, scheduling an event vs. calling a function, SimObjects as parameters |
+| [Debugging](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/04-debugging.md) | debug flags, `DPRINTF`, `panic_if` and `fatal_if` |
+| [Writing a gem5 branch predictor](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/05-branch-predictors.md) | extending a base class that the CPU calls into |
+| [Modeling processors](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/02-beginning-simulation/02-processors.md) | the O3 CPU, and building your own standard library processors |
 
 ## Catching transient faults with instruction duplication
 
@@ -317,7 +317,7 @@ cp -r starter_files/cpu-side/src/. gem5/src/
 git -C gem5 status --short src/cpu
 ```
 
-`git status` should list eight modified files (`M`) and the two new ones (`??`). The CPU side is a copy of gem5 v25.0.0.1's files with the changes above, so it only works in v25.0.0.1, the version you built in [Installing gem5](../../lessons/01-introduction/03-installing-gem5.md). gem5 prints its version when it starts. In any other version, these files would undo that version's own changes to them.
+`git status` should list eight modified files (`M`) and the two new ones (`??`). The CPU side is a copy of gem5 v25.0.0.1's files with the changes above, so it only works in v25.0.0.1, the version you built in [Installing gem5](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/01-introduction/03-installing-gem5.md). gem5 prints its version when it starts. In any other version, these files would undo that version's own changes to them.
 
 With no shadow unit and the CPU's fault injector off, the CPU side behaves exactly like the unmodified gem5.
 
@@ -364,7 +364,7 @@ Before you start, make sure you've copied the  `shadow-unit` directory and all o
 
 ### Step 1.1: The declaration
 
-Open `ShadowUnit.py`. Your unit extends `BaseShadowUnit`, the way `HelloBP` extended `BPredUnit` in the [branch predictor project](../../lessons/04-gem5-models/04a-cpus/05-branch-predictors.md), so the class is already declared with its parent. However, its parameters are missing:
+Open `ShadowUnit.py`. Your unit extends `BaseShadowUnit`, the way `HelloBP` extended `BPredUnit` in the [branch predictor project](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/05-branch-predictors.md), so the class is already declared with its parent. However, its parameters are missing:
 
 | Name | Python type | Default | Meaning |
 |---|---|---|---|
@@ -420,7 +420,7 @@ You should implement:
 
 ### Step 1.4: The SConscript
 
-Fill in the `SConscript`, as in the [SimObjects lesson](../../lessons/04-gem5-models/04a-cpus/01-sim-objects.md#sconscript) and [Writing a `DebugFlag`](../../lessons/04-gem5-models/04a-cpus/04-debugging.md#writing-a-debugflag). Make sure `shadow-unit/` is in `gem5/src/bootcamp/`, then rebuild gem5:
+Fill in the `SConscript`, as in the [SimObjects lesson](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/01-sim-objects.md#sconscript) and [Writing a `DebugFlag`](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/04-debugging.md#writing-a-debugflag). Make sure `shadow-unit/` is in `gem5/src/bootcamp/`, then rebuild gem5:
 
 ```bash
 scons build/ALL/gem5.opt -j$(nproc)
@@ -428,7 +428,7 @@ scons build/ALL/gem5.opt -j$(nproc)
 
 ### Step 1.5: Connect it
 
-1. In `a3_components.py`, give the CPU its shadow unit by setting the CPU's `shadowUnit` parameter, the way the `BranchPredProcessor` in the [debugging lesson](../../lessons/04-gem5-models/04a-cpus/04-debugging.md) set `branchPred`.
+1. In `a3_components.py`, give the CPU its shadow unit by setting the CPU's `shadowUnit` parameter, the way the `BranchPredProcessor` in the [debugging lesson](https://github.com/CUB-gem5-bootcamp/lessons/blob/19d28b02c4ec791cf0c7f768f5f2746c9fe01186/04-gem5-models/04a-cpus/04-debugging.md) set `branchPred`.
 2. In `a3_script.py`, create the `ShadowUnit` with its four parameters, taken from the command-line arguments.
 
 > Assigning a SimObject to another SimObject's parameter also makes it a child of that object, if it doesn't have a parent yet. So the unit takes its clock from the CPU, because a `ClockedObject`'s `clk_domain` defaults to its parent's, and its stats appear next to the CPU's.
